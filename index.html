@@ -1,23 +1,504 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=https://TU-URL-AQUI.com">
-    <title></title>
-    <script>
-        // Redirección automática e inmediata
-        window.location.replace("https://alfasegbog-colombia.vercel.app/");
-    </script>
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            background: #ffffff;
-            overflow: hidden;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banco de Sangre Vida Amarilla | Donar sangre salva vidas</title>
+<meta name="description" content="Banco de Sangre Vida Amarilla: información educativa sobre donación de sangre, requisitos y procesos. Contenido libre y gratuito.">
+<meta name="keywords" content="banco de sangre, donación de sangre, donar sangre, salud, Colombia">
+<meta name="author" content="Banco de Sangre Vida Amarilla">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#8a6d00">
+<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root{
+  --amarillo-900:#4a3900;
+  --amarillo-800:#6b5300;
+  --amarillo-700:#8a6d00;
+  --amarillo-600:#a88400;
+  --amarillo-500:#c9a200;
+  --amarillo-400:#e6bb1f;
+  --amarillo-300:#f2d04d;
+  --amarillo-200:#f8e38a;
+  --amarillo-100:#fcf0bd;
+  --amarillo-50:#fef9e3;
+  --crema:#fffdf5;
+  --blanco:#ffffff;
+  --texto:#2e2600;
+  --texto-suave:#7a6d3a;
+  --borde:#f0e2a8;
+  --sombra:0 4px 20px rgba(74,57,0,0.07);
+  --sombra-hover:0 12px 40px rgba(74,57,0,0.14);
+  --radio:16px;
+  --radio-sm:10px;
+  --max:1140px;
+  --trans:0.3s ease;
+  --fuente:'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+html, body{ scroll-behavior:smooth; }
+body{ font-family:var(--fuente); color:var(--texto); background:var(--crema);
+  line-height:1.75; font-size:16px; -webkit-font-smoothing:antialiased; }
+.contenedor{ width:100%; max-width:var(--max); margin:0 auto; padding:0 24px; }
+
+/* ===== COOKIES ===== */
+#aceptar, #rechazar{ position:absolute; top:-9999px; }
+.cookie-overlay{
+  position:fixed; inset:0;
+  background:rgba(74,57,0,0.75);
+  backdrop-filter:blur(6px);
+  z-index:9998;
+}
+.cookie-banner{
+  position:fixed; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  padding:20px; z-index:9999;
+}
+.cookie-modal{
+  background:var(--blanco);
+  max-width:520px; width:100%;
+  padding:44px 36px;
+  border-radius:20px;
+  box-shadow:0 24px 70px rgba(0,0,0,0.35);
+  text-align:center;
+  border-top:6px solid var(--amarillo-400);
+  animation:entradaCookie 0.55s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes entradaCookie{
+  from{ transform:scale(0.88) translateY(25px); opacity:0; }
+  to{ transform:scale(1) translateY(0); opacity:1; }
+}
+.cookie-modal h2{
+  font-size:1.5rem; margin-bottom:12px;
+  color:var(--amarillo-900); font-weight:800;
+}
+.cookie-modal p{
+  font-size:0.93rem; color:var(--texto-suave); margin-bottom:28px;
+}
+.cookie-acciones{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.cookie-acciones .boton-cookie{
+  display:inline-block; padding:13px 34px; border-radius:50px;
+  font-weight:700; font-size:0.95rem; text-decoration:none;
+  transition:all var(--trans); min-width:150px; text-align:center;
+  font-family:var(--fuente);
+}
+.boton-cookie.aceptar{
+  background:var(--amarillo-500); color:#fff;
+  box-shadow:0 4px 16px rgba(201,162,0,0.4);
+}
+.boton-cookie.aceptar:hover{
+  background:var(--amarillo-400); transform:translateY(-3px);
+  box-shadow:0 8px 28px rgba(201,162,0,0.5);
+}
+.boton-cookie.rechazar{
+  background:transparent; color:var(--amarillo-700);
+  border:2px solid var(--amarillo-500);
+}
+.boton-cookie.rechazar:hover{
+  background:var(--amarillo-500); color:#fff; transform:translateY(-3px);
+}
+.cookie-enlaces{ margin-top:18px; font-size:0.8rem; color:var(--texto-suave); }
+.cookie-enlaces a{ color:var(--amarillo-700); font-weight:600; text-decoration:none; }
+.cookie-enlaces a:hover{ text-decoration:underline; }
+
+#aceptar:target ~ .cookie-overlay,
+#aceptar:target ~ .cookie-banner,
+#rechazar:target ~ .cookie-overlay,
+#rechazar:target ~ .cookie-banner{ display:none; }
+.contenido-principal{ display:none; }
+#aceptar:target ~ .contenido-principal,
+#rechazar:target ~ .contenido-principal{
+  display:block; animation:aparecer 0.6s ease;
+}
+@keyframes aparecer{
+  from{ opacity:0; transform:translateY(18px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+/* ===== CABECERA ===== */
+.cabecera{
+  position:sticky; top:0;
+  background:rgba(255,253,245,0.97);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--borde);
+  z-index:1000;
+}
+.barra-nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 24px; max-width:var(--max); margin:0 auto;
+}
+.logo{
+  display:flex; align-items:center; gap:11px;
+  font-weight:800; font-size:1.15rem;
+  color:var(--amarillo-900); text-decoration:none;
+}
+.logo-icono{
+  width:42px; height:42px;
+  background:var(--amarillo-500);
+  color:#fff; border-radius:50%;
+  display:grid; place-items:center; font-size:1.2rem;
+}
+.menu{ display:flex; gap:2px; list-style:none; align-items:center; }
+.menu a{
+  color:var(--texto); padding:8px 15px; border-radius:var(--radio-sm);
+  font-size:0.88rem; font-weight:600;
+  transition:all var(--trans); text-decoration:none;
+}
+.menu a:hover{ background:var(--amarillo-50); color:var(--amarillo-800); }
+.menu a.activo{ color:var(--amarillo-800); }
+
+/* ===== FRANJA ===== */
+.franja-valores{
+  background:var(--amarillo-500);
+  color:#fff; padding:10px 0;
+  text-align:center; font-weight:700; font-size:0.82rem;
+}
+
+/* ===== HERO ===== */
+.hero{
+  background:linear-gradient(140deg, #4a3900 0%, #8a6d00 55%, #c9a200 100%);
+  color:#fff; padding:108px 0 88px;
+  text-align:center; position:relative; overflow:hidden;
+}
+.hero::before{
+  content:''; position:absolute; top:-80px; left:-80px;
+  width:340px; height:340px;
+  background:radial-gradient(circle, rgba(242,208,77,0.25), transparent 70%);
+}
+.hero::after{
+  content:''; position:absolute; bottom:-2px; left:0; right:0;
+  height:90px; background:var(--crema);
+  clip-path:ellipse(76% 100% at 50% 100%);
+}
+.hero .contenedor{ position:relative; z-index:2; }
+.hero h1{
+  color:#fff; margin-bottom:20px;
+  font-size:clamp(2rem,5vw,3.4rem);
+  line-height:1.16; font-weight:800;
+}
+.hero p.subtitulo{
+  font-size:clamp(1rem,2vw,1.2rem); max-width:700px;
+  margin:0 auto 32px; color:rgba(255,255,255,0.9);
+}
+.hero-botones{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+.boton{
+  display:inline-block; padding:14px 34px; border-radius:50px;
+  font-weight:700; font-size:0.96rem; border:none; cursor:pointer;
+  transition:all var(--trans); text-decoration:none;
+  font-family:var(--fuente);
+}
+.boton:hover{ transform:translateY(-3px); text-decoration:none; }
+.boton.primario{
+  background:var(--amarillo-300); color:var(--amarillo-900);
+  box-shadow:0 6px 22px rgba(242,208,77,0.45);
+}
+.boton.primario:hover{
+  background:var(--amarillo-200);
+  box-shadow:0 10px 34px rgba(242,208,77,0.55);
+}
+.boton.secundario{
+  background:transparent; color:#fff;
+  border:2px solid rgba(255,255,255,0.5);
+}
+.boton.secundario:hover{
+  background:rgba(255,255,255,0.15); border-color:#fff;
+}
+.hero-insignias{
+  display:flex; gap:10px; justify-content:center;
+  flex-wrap:wrap; margin-top:44px;
+}
+.insignia{
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.25);
+  padding:8px 20px; border-radius:50px;
+  font-size:0.82rem; font-weight:600;
+  color:rgba(255,255,255,0.95);
+}
+
+/* ===== SECCIONES ===== */
+.seccion{ padding:84px 0; }
+.seccion:nth-child(even){ background:var(--amarillo-50); }
+.seccion-encabezado{ max-width:740px; margin-bottom:44px; }
+.etiqueta-seccion{
+  display:inline-block; background:var(--amarillo-100);
+  color:var(--amarillo-800); font-weight:700;
+  font-size:0.72rem; letter-spacing:0.12em;
+  text-transform:uppercase; padding:7px 18px;
+  border-radius:50px; margin-bottom:16px;
+  border:1px solid var(--amarillo-200);
+}
+h1{ font-size:clamp(2rem,5vw,3.3rem); font-weight:800; }
+h2{ font-size:clamp(1.6rem,3vw,2.3rem); font-weight:800; color:var(--amarillo-900); }
+h3{ font-size:1.2rem; font-weight:700; color:var(--amarillo-800); }
+p{ margin:0 0 1rem; color:var(--texto); }
+
+/* ===== TARJETAS ===== */
+.rejilla{ display:grid; gap:22px; }
+.rejilla-2{ grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); }
+.rejilla-3{ grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); }
+.rejilla-4{ grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); }
+.tarjeta{
+  background:var(--blanco); border:1px solid var(--borde);
+  border-radius:var(--radio); padding:30px 26px;
+  box-shadow:var(--sombra); transition:all var(--trans);
+  text-align:center;
+}
+.tarjeta:hover{
+  transform:translateY(-6px); box-shadow:var(--sombra-hover);
+  border-color:var(--amarillo-300);
+}
+.tarjeta .icono{
+  width:64px; height:64px; margin:0 auto 16px;
+  background:var(--amarillo-100); border-radius:50%;
+  display:grid; place-items:center; font-size:1.8rem;
+}
+.tarjeta h3{ margin-bottom:6px; }
+
+/* ===== AVISOS ===== */
+.aviso{
+  border-radius:var(--radio); padding:22px 28px;
+  border-left:5px solid var(--amarillo-500);
+  background:var(--amarillo-50); margin:22px 0;
+}
+.aviso.info{ border-left-color:var(--amarillo-700); background:var(--amarillo-100); }
+.aviso.exito{ border-left-color:var(--amarillo-800); background:var(--amarillo-50); }
+.aviso.peligro{ border-left-color:var(--amarillo-400); background:var(--amarillo-100); }
+
+/* ===== PIE ===== */
+.pie{ background:var(--amarillo-900); color:rgba(255,255,255,0.85); padding:60px 0 28px; }
+.pie a{ color:var(--amarillo-300); transition:opacity var(--trans); text-decoration:none; }
+.pie a:hover{ color:#fff; }
+.pie-rejilla{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:32px; margin-bottom:32px;
+}
+.pie h4{ color:#fff; margin-bottom:12px; }
+.pie p{ color:rgba(255,255,255,0.65); }
+.pie ul{ list-style:none; padding:0; }
+.pie ul li{ margin-bottom:6px; }
+.pie-legal{
+  border-top:1px solid rgba(255,255,255,0.12);
+  padding-top:24px; font-size:0.83rem;
+  text-align:center; color:rgba(255,255,255,0.45);
+}
+.pie-legal a{ color:rgba(255,255,255,0.7); margin:0 7px; }
+.pie-legal a:hover{ color:#fff; }
+
+@media (max-width:860px){
+  .menu{
+    position:absolute; top:70px; left:0; right:0;
+    flex-direction:column; align-items:stretch;
+    background:var(--crema); border-bottom:1px solid var(--borde);
+    padding:10px 18px; box-shadow:var(--sombra-hover);
+  }
+  .menu a{ padding:11px 14px; }
+  .hero{ padding:80px 0 60px; }
+  .seccion{ padding:56px 0; }
+  .cookie-modal{ padding:34px 22px; margin:14px; }
+}
+@media (max-width:480px){
+  .rejilla-2,.rejilla-3,.rejilla-4{ grid-template-columns:1fr; }
+  .hero-insignias{ gap:7px; }
+  .insignia{ font-size:0.72rem; padding:6px 14px; }
+  .cookie-acciones{ flex-direction:column; }
+  .cookie-acciones .boton-cookie{ width:100%; min-width:unset; }
+}
+</style>
 </head>
 <body>
+
+<span id="aceptar"></span>
+<span id="rechazar"></span>
+
+<div class="cookie-overlay"></div>
+
+<div class="cookie-banner" role="dialog" aria-modal="true" aria-labelledby="titulo-cookies">
+  <div class="cookie-modal">
+    <h2 id="titulo-cookies">Aviso de cookies</h2>
+    <p>Usamos cookies para mejorar tu experiencia y analizar el tráfico de forma anónima. Al aceptar, nos permites ofrecerte contenido más relevante. También puedes rechazar las cookies no esenciales.</p>
+    <div class="cookie-acciones">
+      <a href="#rechazar" class="boton-cookie rechazar">Rechazar</a>
+      <a href="#aceptar" class="boton-cookie aceptar">Aceptar cookies</a>
+    </div>
+    <div class="cookie-enlaces">
+      <a href="privacidad.html">Política de Privacidad</a> ·
+      <a href="politicas-cookies.html">Política de Cookies</a>
+    </div>
+  </div>
+</div>
+
+<div class="contenido-principal">
+
+  <header class="cabecera">
+    <nav class="barra-nav" aria-label="Navegación principal">
+      <a href="index.html" class="logo">
+        <span class="logo-icono">🩸</span>
+        <span>Banco de Sangre Vida Amarilla</span>
+      </a>
+      <ul class="menu">
+        <li><a href="index.html" class="activo">Inicio</a></li>
+        <li><a href="#donar">Donar</a></li>
+        <li><a href="#requisitos">Requisitos</a></li>
+        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#preguntas">Preguntas</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="franja-valores">🩸 Donar sangre salva vidas · Información educativa gratuita · Sin pagos · Sin donaciones</div>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="contenedor">
+        <h1>Tu sangre puede salvar hasta 3 vidas</h1>
+        <p class="subtitulo">Información clara y educativa sobre la donación de sangre. Aprende los requisitos, el proceso y cómo ayudar a quien lo necesita.</p>
+        <div class="hero-botones">
+          <a href="#donar" class="boton primario">Quiero donar</a>
+          <a href="#requisitos" class="boton secundario">Ver requisitos</a>
+        </div>
+        <div class="hero-insignias">
+          <span class="insignia">🩸 Donación segura</span>
+          <span class="insignia">💛 Salva vidas</span>
+          <span class="insignia">🏥 Salud pública</span>
+          <span class="insignia">🆓 Acceso libre</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion" id="sobre">
+      <div class="contenedor">
+        <div class="seccion-encabezado">
+          <span class="etiqueta-seccion">Sección 1 · Sobre nosotros</span>
+          <h2>Un proyecto educativo sobre donación de sangre</h2>
+          <p>Banco de Sangre Vida Amarilla nace como una iniciativa personal para compartir información útil y clara sobre la donación de sangre.</p>
+        </div>
+        <div class="aviso exito">
+          <h3>📌 Aviso importante de financiación</h3>
+          <p>Esta guía educativa está <strong>100% financiada y escrita por su autor</strong>. <strong>No se aceptan donaciones. No se procesan pagos. No se vende ningún producto ni servicio.</strong> Todo el contenido es de <strong>libre acceso</strong>.</p>
+        </div>
+        <div class="rejilla rejilla-3">
+          <div class="tarjeta"><span class="icono">🎯</span><h3>Nuestro objetivo</h3><p>Difundir información clara sobre la donación de sangre y su importancia.</p></div>
+          <div class="tarjeta"><span class="icono">🤝</span><h3>Para quién es</h3><p>Para cualquier persona que quiera donar o informarse sobre el proceso.</p></div>
+          <div class="tarjeta"><span class="icono">💛</span><h3>Sin ánimo de lucro</h3><p>Es una iniciativa personal de divulgación sin fines comerciales.</p></div>
+        </div>
+        <div class="aviso info">
+          <h3>Aviso de contenido educativo</h3>
+          <p>La información de este sitio es <strong>educativa y orientativa</strong>. No reemplaza la atención médica profesional ni las indicaciones de las autoridades de salud.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion" id="donar">
+      <div class="contenedor">
+        <div class="seccion-encabezado">
+          <span class="etiqueta-seccion">Sección 2 · Donar</span>
+          <h2>¿Por qué donar sangre?</h2>
+        </div>
+        <p>Donar sangre es un acto solidario que puede salvar hasta <strong>tres vidas</strong> por cada donación. La sangre es necesaria para cirugías, tratamientos, emergencias y enfermedades crónicas.</p>
+        <h3>Beneficios de donar sangre</h3>
+        <div class="rejilla rejilla-3">
+          <div class="tarjeta"><span class="icono">💛</span><h3>Salvas vidas</h3><p>Tu donación puede ayudar a pacientes en situaciones críticas.</p></div>
+          <div class="tarjeta"><span class="icono">❤️</span><h3>Mejora tu salud</h3><p>Donar sangre estimula la producción de nuevas células.</p></div>
+          <div class="tarjeta"><span class="icono">🔬</span><h3>Chequeo gratuito</h3><p>Antes de donar se realiza un control básico de salud.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion" id="requisitos">
+      <div class="contenedor">
+        <div class="seccion-encabezado">
+          <span class="etiqueta-seccion">Sección 3 · Requisitos</span>
+          <h2>Requisitos para donar sangre</h2>
+        </div>
+        <div class="rejilla rejilla-2">
+          <div class="tarjeta"><span class="icono">👤</span><h3>Edad</h3><p>Tener entre 18 y 65 años (según normativa local).</p></div>
+          <div class="tarjeta"><span class="icono">⚖️</span><h3>Peso</h3><p>Pesar al menos 50 kg.</p></div>
+          <div class="tarjeta"><span class="icono">💚</span><h3>Salud</h3><p>Sentirse bien de salud el día de la donación.</p></div>
+          <div class="tarjeta"><span class="icono">🍽️</span><h3>Alimentación</h3><p>Haber comido bien y mantenerse hidratado.</p></div>
+          <div class="tarjeta"><span class="icono">🚫</span><h3>Sin alcohol</h3><p>No haber consumido alcohol en las últimas 24 horas.</p></div>
+          <div class="tarjeta"><span class="icono">📋</span><h3>Documento</h3><p>Presentar documento de identidad válido.</p></div>
+        </div>
+        <div class="aviso peligro">
+          <h3>⚠️ Importante</h3>
+          <p>Estos requisitos son orientativos. Siempre consulta con el banco de sangre o profesional de salud antes de donar.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion" id="proceso">
+      <div class="contenedor">
+        <div class="seccion-encabezado">
+          <span class="etiqueta-seccion">Sección 4 · Proceso</span>
+          <h2>¿Cómo es el proceso de donación?</h2>
+        </div>
+        <div class="rejilla rejilla-4">
+          <div class="tarjeta"><span class="icono">1️⃣</span><h3>Registro</h3><p>Te identificas y llenas un formulario básico.</p></div>
+          <div class="tarjeta"><span class="icono">2️⃣</span><h3>Chequeo</h3><p>Se revisa tu presión, peso y estado general.</p></div>
+          <div class="tarjeta"><span class="icono">3️⃣</span><h3>Donación</h3><p>El proceso dura aproximadamente 10 minutos.</p></div>
+          <div class="tarjeta"><span class="icono">4️⃣</span><h3>Recuperación</h3><p>Descansas unos minutos y recibes un refrigerio.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion" id="preguntas">
+      <div class="contenedor">
+        <div class="seccion-encabezado">
+          <span class="etiqueta-seccion">Preguntas frecuentes</span>
+          <h2>Preguntas frecuentes</h2>
+        </div>
+        <div style="display:grid; gap:12px;">
+          <div style="border:1px solid var(--borde); border-radius:var(--radio-sm); background:#fff; padding:20px 24px;">
+            <h3 style="margin-bottom:8px;">¿Donar sangre duele?</h3>
+            <p style="margin:0;">Solo se siente un pequeño pinchazo al inicio. El resto del proceso es indoloro.</p>
+          </div>
+          <div style="border:1px solid var(--borde); border-radius:var(--radio-sm); background:#fff; padding:20px 24px;">
+            <h3 style="margin-bottom:8px;">¿Cada cuánto puedo donar?</h3>
+            <p style="margin:0;">Los hombres pueden donar cada 3 meses y las mujeres cada 4 meses, aproximadamente.</p>
+          </div>
+          <div style="border:1px solid var(--borde); border-radius:var(--radio-sm); background:#fff; padding:20px 24px;">
+            <h3 style="margin-bottom:8px;">¿Esta página cobra por su contenido?</h3>
+            <p style="margin:0;">No. Banco de Sangre Vida Amarilla es <strong>100% gratuita</strong>. No se procesan pagos, no se aceptan donaciones y todo el contenido es de libre acceso.</p>
+          </div>
+          <div style="border:1px solid var(--borde); border-radius:var(--radio-sm); background:#fff; padding:20px 24px;">
+            <h3 style="margin-bottom:8px;">¿Usan cookies?</h3>
+            <p style="margin:0;">Este sitio no utiliza cookies ni scripts de seguimiento. Es contenido educativo de libre acceso.</p>
+          </div>
+        </div>
+        <div class="aviso exito" style="margin-top:34px;">
+          <h3>¿Te resultó útil esta guía?</h3>
+          <p>Compártela con tu familia, tus amigos o tu comunidad. Donar sangre también salva vidas.</p>
+          <a href="contacto.html" class="boton primario" style="margin-top:10px; display:inline-block;">Escríbenos tu opinión</a>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:var(--amarillo-800); color:var(--amarillo-100); padding:60px 0; text-align:center;">
+      <div class="contenedor" style="max-width:820px; margin:0 auto;">
+        <h2 style="color:#fff;">Compromiso de transparencia</h2>
+        <p style="font-size:1.1rem; color:rgba(255,255,255,0.85);">
+          <strong>Banco de Sangre Vida Amarilla</strong> es una guía educativa <strong>100% financiada y escrita por su autor</strong>. No se aceptan donaciones, no se procesan pagos y no se vende ningún producto o servicio. Todo el contenido es de <strong>libre acceso</strong>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <div class="pie-rejilla">
+        <div><h4>🩸 Vida Amarilla</h4><p>Guía educativa y gratuita sobre donación de sangre y salud.</p></div>
+        <div><h4>Temas principales</h4><ul><li><a href="#donar">Donar sangre</a></li><li><a href="#requisitos">Requisitos</a></li><li><a href="#proceso">Proceso</a></li><li><a href="#preguntas">Preguntas</a></li></ul></div>
+        <div><h4>Información legal</h4><ul><li><a href="privacidad.html">Política de Privacidad</a></li><li><a href="politicas-cookies.html">Política de Cookies</a></li><li><a href="contacto.html">Contacto</a></li></ul></div>
+        <div><h4>Contacto</h4><ul><li>📧 <a href="mailto:contacto@vidaamarilla.co">contacto@vidaamarilla.co</a></li><li>📞 Emergencias: 123</li></ul></div>
+      </div>
+      <div class="pie-legal">
+        <p>© 2026 Banco de Sangre Vida Amarilla — Todos los derechos reservados.</p>
+        <p><a href="privacidad.html">Privacidad</a> · <a href="politicas-cookies.html">Cookies</a> · <a href="contacto.html">Contacto</a></p>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
 </body>
 </html>
