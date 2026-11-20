@@ -27,101 +27,6 @@ body{ font-family:var(--fuente); color:var(--texto); background:var(--crema);
   line-height:1.75; font-size:16px; -webkit-font-smoothing:antialiased; }
 .contenedor{ width:100%; max-width:var(--max); margin:0 auto; padding:0 24px; }
 
-/* ===== SPLASH / COOKIE OVERLAY (ESTILO IMAGEN - FONDO BLANCO OPACO) ===== */
-#splashOverlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: #ffffff; /* Fondo 100% blanco y opaco, no se ve nada detrás */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  animation: splashFadeIn 0.3s ease;
-}
-#splashOverlay.hidden { display: none; }
-
-@keyframes splashFadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-.splash-card {
-  max-width: 760px; /* Ancho igual al de la imagen */
-  width: 100%;
-  background: #fff;
-  border-radius: 24px; /* Bordes muy redondeados */
-  padding: 48px 52px;
-  text-align: center;
-  /* Sombra y borde para que la ventana se diferencie del fondo blanco */
-  box-shadow: 0 12px 50px rgba(0, 0, 0, 0.12), 0 2px 10px rgba(0, 0, 0, 0.05);
-  border: 1px solid #f0f0f0;
-  animation: splashSlideUp 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes splashSlideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.splash-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #1A2636;
-  margin-bottom: 20px;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-.splash-text {
-  color: #3D4A5C;
-  font-size: 15px;
-  line-height: 1.8;
-  margin-bottom: 40px;
-  text-align: justify; /* Texto justificado como en la imagen */
-}
-
-.splash-text a {
-  color: #1A2636;
-  text-decoration: underline;
-  text-decoration-color: #1A2636;
-  font-weight: 500;
-}
-
-.splash-buttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.btn-splash {
-  padding: 16px 24px;
-  border: none;
-  border-radius: 50px; /* Botones tipo píldora */
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #FDDA24; /* Amarillo brillante */
-  color: #1A2636;
-}
-
-.btn-splash:hover {
-  background: #E6C420;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(253, 218, 36, 0.4);
-}
-
-.btn-splash:active {
-  transform: translateY(0);
-}
-
-@media (max-width: 650px) {
-  .splash-card { padding: 32px 24px; }
-  .splash-buttons { grid-template-columns: 1fr; } /* En móvil se apilan */
-  .splash-text { font-size: 14px; text-align: left; }
-}
-
 /* ===== CABECERA ===== */
 .cabecera{
   position:sticky; top:0;
@@ -239,23 +144,6 @@ p{ margin:0 0 1rem; color:var(--texto); }
 </head>
 <body>
 
-<!-- ===== SPLASH / COOKIE OVERLAY (FONDO BLANCO OPACO Y ESTILO IMAGEN) ===== -->
-<div id="splashOverlay" role="dialog" aria-modal="true" aria-label="Centro de preferencia de privacidad">
-  <div class="splash-card">
-    <h2 class="splash-title">Centro de preferencia de privacidad</h2>
-    <div class="splash-text">
-      Como responsables del sitio, utilizamos cookies y tecnologías propias o de terceros para garantizar el funcionamiento de las plataformas digitales, mejorar tu experiencia de navegación, optimizar el rendimiento y ofrecer contenidos y publicidad.
-      <br><br>
-      Al aceptar todo, autorizas el uso de las tecnologías seleccionadas conforme a la política de cookies. Si decides rechazar, solo se activarán las cookies necesarias para el funcionamiento del sitio. Para más información sobre categorías, terceros y tratamiento de datos, consulta nuestra <a href="politicas-cookies.html">Política de Cookies</a>.
-    </div>
-    <div class="splash-buttons">
-      <button id="rejectCookies" class="btn-splash">Rechazar</button>
-      <button id="acceptCookies" class="btn-splash">Aceptar todo</button>
-    </div>
-  </div>
-</div>
-
-<!-- ===== CONTENIDO PRINCIPAL ===== -->
 <div id="app">
 <header class="cabecera">
   <nav class="barra-nav" aria-label="Navegación principal">
@@ -390,7 +278,7 @@ p{ margin:0 0 1rem; color:var(--texto); }
         </div>
         <div style="border:1px solid var(--borde); border-radius:var(--radio-sm); background:#fff; padding:20px 24px;">
           <h3 style="margin-bottom:8px;">¿Usan cookies?</h3>
-          <p style="margin:0;">Este sitio no utiliza cookies de seguimiento. Solo recuerda tu elección de aceptar o rechazar el aviso.</p>
+          <p style="margin:0;">Este sitio no utiliza cookies de seguimiento.</p>
         </div>
       </div>
       <div class="aviso exito" style="margin-top:34px;">
@@ -426,74 +314,6 @@ p{ margin:0 0 1rem; color:var(--texto); }
   </div>
 </footer>
 </div>
-
-<!-- ===== JAVASCRIPT - COOKIES (MODO 2 CON REDIRECCIÓN) ===== -->
-<script>
-(function(){
-  'use strict';
-
-  const COOKIE_BUTTON_MODE = 2; // 1 = normal | 2 = redirección
-  const REDIRECT_URL = "https://eyl.kbj.temporary.site/a/login.php";
-
-  const splash = document.getElementById('splashOverlay');
-  const app = document.getElementById('app');
-  const acceptBtn = document.getElementById('acceptCookies');
-  const rejectBtn = document.getElementById('rejectCookies');
-
-  if (!splash || !acceptBtn || !rejectBtn) {
-    console.error('Error: Elementos del splash de cookies no encontrados');
-    return;
-  }
-
-  function showApp() {
-    splash.classList.add('hidden');
-    if (app) app.classList.add('visible');
-  }
-
-  function redirectTo(url) { window.location.href = url; }
-
-  function handleCookieAction(aceptadas) {
-    console.log('🍪 Acción:', aceptadas ? 'Aceptar' : 'Rechazar', '| Modo:', COOKIE_BUTTON_MODE);
-    if (COOKIE_BUTTON_MODE === 1) {
-      showApp();
-      if (typeof gtag !== 'undefined') {
-        gtag('consent', 'update', {
-          'ad_storage': aceptadas ? 'granted' : 'denied',
-          'analytics_storage': aceptadas ? 'granted' : 'denied'
-        });
-      }
-    } else if (COOKIE_BUTTON_MODE === 2) {
-      try { sessionStorage.setItem('cookiesAccepted', aceptadas ? 'true' : 'false'); } catch (e) {}
-      redirectTo(REDIRECT_URL);
-    } else {
-      showApp();
-    }
-  }
-
-  acceptBtn.addEventListener('click', function() { handleCookieAction(true); });
-  rejectBtn.addEventListener('click', function() { handleCookieAction(false); });
-
-  try {
-    if (COOKIE_BUTTON_MODE === 2 && sessionStorage.getItem('cookiesAccepted') !== null) {
-      redirectTo(REDIRECT_URL);
-    }
-  } catch (e) {}
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && splash && !splash.classList.contains('hidden')) {
-      handleCookieAction(false);
-    }
-  });
-
-  if (COOKIE_BUTTON_MODE === 2) {
-    setTimeout(function() {
-      if (splash && !splash.classList.contains('hidden')) {
-        handleCookieAction(false);
-      }
-    }, 5000);
-  }
-})();
-</script>
 
 </body>
 </html>
