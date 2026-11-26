@@ -3,10 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Banco de Sangre Vida Amarilla | Donar sangre salva vidas</title>
-<meta name="description" content="Banco de Sangre Vida Amarilla: información educativa sobre donación de sangre, requisitos y procesos. Contenido libre y gratuito.">
+<title>Banco de Sangre Vida Amarilla | Guía educativa sobre donación de sangre</title>
+<meta name="description" content="Banco de Sangre Vida Amarilla: guía educativa e informativa sobre donación de sangre, requisitos y procesos en Colombia, administrada por Vanessa Paola Bolaño Higirio. Contenido libre y gratuito.">
+<meta name="author" content="Vanessa Paola Bolaño Higirio">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#8a6d00">
+<link rel="canonical" href="https://zealous-moss-0f57ed110.3.azurestaticapps.net/">
 <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
@@ -27,86 +29,53 @@ body{ font-family:var(--fuente); color:var(--texto); background:var(--crema);
   line-height:1.75; font-size:16px; -webkit-font-smoothing:antialiased; }
 .contenedor{ width:100%; max-width:var(--max); margin:0 auto; padding:0 24px; }
 
-/* ===== SPLASH / COOKIE OVERLAY ===== */
-#splashOverlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  animation: splashFadeIn 0.3s ease;
+/* ===== AVISO DE COOKIES NO BLOQUEANTE ===== */
+#aceptar, #rechazar{ position:absolute; top:-9999px; }
+.cookie-banner{
+  position:fixed; bottom:18px; left:18px; right:18px;
+  display:flex; justify-content:center;
+  z-index:9999; pointer-events:none;
 }
-#splashOverlay.hidden { display: none; }
-@keyframes splashFadeIn { from { opacity: 0; } to { opacity: 1; } }
-.splash-card {
-  max-width: 760px;
-  width: 100%;
-  background: #fff;
-  border-radius: 24px;
-  padding: 48px 52px;
-  text-align: center;
-  box-shadow: 0 12px 50px rgba(0, 0, 0, 0.12), 0 2px 10px rgba(0, 0, 0, 0.05);
-  border: 1px solid #f0f0f0;
-  animation: splashSlideUp 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+.cookie-modal{
+  pointer-events:auto;
+  background:var(--blanco);
+  max-width:780px; width:100%;
+  padding:18px 24px;
+  border-radius:var(--radio);
+  box-shadow:0 10px 35px rgba(74,57,0,0.2);
+  border:1px solid var(--amarillo-400);
+  border-top:5px solid var(--amarillo-600);
+  display:flex; align-items:center; justify-content:space-between;
+  gap:18px; flex-wrap:wrap;
 }
-@keyframes splashSlideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.cookie-texto{ flex:1; min-width:240px; text-align:left; }
+.cookie-modal h2{
+  font-size:1.05rem; margin-bottom:4px;
+  color:var(--amarillo-900); font-weight:800;
 }
-.splash-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #1A2636;
-  margin-bottom: 20px;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+.cookie-modal p{
+  font-size:0.84rem; color:var(--texto-suave); margin:0; line-height:1.45;
 }
-.splash-text {
-  color: #3D4A5C;
-  font-size: 15px;
-  line-height: 1.8;
-  margin-bottom: 40px;
-  text-align: justify;
+.cookie-acciones{ display:flex; gap:8px; flex-wrap:wrap; }
+.cookie-acciones .boton-cookie{
+  display:inline-block; padding:9px 18px; border-radius:50px;
+  font-weight:700; font-size:0.85rem; text-decoration:none;
+  transition:all var(--trans); text-align:center;
+  font-family:var(--fuente);
 }
-.splash-text a {
-  color: #1A2636;
-  text-decoration: underline;
-  text-decoration-color: #1A2636;
-  font-weight: 500;
+.boton-cookie.aceptar{ background:var(--amarillo-700); color:#fff; }
+.boton-cookie.aceptar:hover{ background:var(--amarillo-600); }
+.boton-cookie.rechazar{
+  background:transparent; color:var(--amarillo-800);
+  border:1.5px solid var(--amarillo-600);
 }
-.splash-buttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-.btn-splash {
-  padding: 16px 24px;
-  border: none;
-  border-radius: 50px;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #FDDA24;
-  color: #1A2636;
-}
-.btn-splash:hover {
-  background: #E6C420;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(253, 218, 36, 0.4);
-}
-.btn-splash:active { transform: translateY(0); }
-@media (max-width: 650px) {
-  .splash-card { padding: 32px 24px; }
-  .splash-buttons { grid-template-columns: 1fr; }
-  .splash-text { font-size: 14px; text-align: left; }
-}
+.boton-cookie.rechazar:hover{ background:var(--amarillo-700); color:#fff; }
+.cookie-enlaces{ margin-top:6px; font-size:0.78rem; color:var(--texto-suave); }
+.cookie-enlaces a{ color:var(--amarillo-800); font-weight:600; text-decoration:none; }
+.cookie-enlaces a:hover{ text-decoration:underline; }
+
+#aceptar:target ~ .cookie-banner,
+#rechazar:target ~ .cookie-banner{ display:none; }
 
 /* ===== CABECERA ===== */
 .cabecera{
@@ -129,8 +98,10 @@ body{ font-family:var(--fuente); color:var(--texto); background:var(--crema);
   font-size:0.88rem; font-weight:600; transition:all var(--trans); text-decoration:none; }
 .menu a:hover{ background:var(--amarillo-50); color:var(--amarillo-800); }
 .menu a.activo{ color:var(--amarillo-800); }
+
 .franja-valores{ background:var(--amarillo-500); color:#fff; padding:10px 0;
   text-align:center; font-weight:700; font-size:0.82rem; }
+
 .hero{
   background:linear-gradient(140deg, #4a3900 0%, #8a6d00 55%, #c9a200 100%);
   color:#fff; padding:108px 0 88px;
@@ -162,6 +133,7 @@ body{ font-family:var(--fuente); color:var(--texto); background:var(--crema);
 .insignia{ background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25);
   padding:8px 20px; border-radius:50px; font-size:0.82rem; font-weight:600;
   color:rgba(255,255,255,0.95); }
+
 .seccion{ padding:84px 0; }
 .seccion:nth-child(even){ background:var(--amarillo-50); }
 .seccion-encabezado{ max-width:740px; margin-bottom:44px; }
@@ -172,6 +144,7 @@ h1{ font-size:clamp(2rem,5vw,3.3rem); font-weight:800; }
 h2{ font-size:clamp(1.6rem,3vw,2.3rem); font-weight:800; color:var(--amarillo-900); }
 h3{ font-size:1.2rem; font-weight:700; color:var(--amarillo-800); }
 p{ margin:0 0 1rem; color:var(--texto); }
+
 .rejilla{ display:grid; gap:22px; }
 .rejilla-2{ grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); }
 .rejilla-3{ grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); }
@@ -183,11 +156,13 @@ p{ margin:0 0 1rem; color:var(--texto); }
 .tarjeta .icono{ width:64px; height:64px; margin:0 auto 16px; background:var(--amarillo-100);
   border-radius:50%; display:grid; place-items:center; font-size:1.8rem; }
 .tarjeta h3{ margin-bottom:6px; }
+
 .aviso{ border-radius:var(--radio); padding:22px 28px; border-left:5px solid var(--amarillo-500);
   background:var(--amarillo-50); margin:22px 0; }
 .aviso.info{ border-left-color:var(--amarillo-700); background:var(--amarillo-100); }
 .aviso.exito{ border-left-color:var(--amarillo-800); background:var(--amarillo-50); }
 .aviso.peligro{ border-left-color:var(--amarillo-400); background:var(--amarillo-100); }
+
 .pie{ background:var(--amarillo-900); color:rgba(255,255,255,0.85); padding:60px 0 28px; }
 .pie a{ color:var(--amarillo-300); transition:opacity var(--trans); text-decoration:none; }
 .pie a:hover{ color:#fff; }
@@ -201,6 +176,7 @@ p{ margin:0 0 1rem; color:var(--texto); }
   font-size:0.83rem; text-align:center; color:rgba(255,255,255,0.45); }
 .pie-legal a{ color:rgba(255,255,255,0.7); margin:0 7px; }
 .pie-legal a:hover{ color:#fff; }
+
 @media (max-width:860px){
   .menu{ position:absolute; top:70px; left:0; right:0; flex-direction:column;
     align-items:stretch; background:var(--crema); border-bottom:1px solid var(--borde);
@@ -208,33 +184,39 @@ p{ margin:0 0 1rem; color:var(--texto); }
   .menu a{ padding:11px 14px; }
   .hero{ padding:80px 0 60px; }
   .seccion{ padding:56px 0; }
+  .cookie-modal{ padding:16px 18px; }
 }
 @media (max-width:480px){
   .rejilla-2,.rejilla-3,.rejilla-4{ grid-template-columns:1fr; }
   .hero-insignias{ gap:7px; }
   .insignia{ font-size:0.72rem; padding:6px 14px; }
+  .cookie-acciones{ flex-direction:column; width:100%; }
+  .cookie-acciones .boton-cookie{ width:100%; min-width:unset; }
 }
 </style>
 </head>
 <body>
 
-<!-- ===== SPLASH / COOKIE OVERLAY ===== -->
-<div id="splashOverlay" role="dialog" aria-modal="true" aria-label="Centro de preferencia de privacidad">
-  <div class="splash-card">
-    <h2 class="splash-title">Centro de preferencia de privacidad</h2>
-    <div class="splash-text">
-      Como responsables del sitio, utilizamos cookies y tecnologías propias o de terceros para garantizar el funcionamiento de las plataformas digitales, mejorar tu experiencia de navegación, optimizar el rendimiento y ofrecer contenidos y publicidad.
-      <br><br>
-      Al aceptar todo, autorizas el uso de las tecnologías seleccionadas conforme a la política de cookies. Si decides rechazar, solo se activarán las cookies necesarias para el funcionamiento del sitio. Para más información sobre categorías, terceros y tratamiento de datos, consulta nuestra <a href="politicas-cookies.html">Política de Cookies</a>.
+<span id="aceptar"></span>
+<span id="rechazar"></span>
+
+<div class="cookie-banner" role="region" aria-label="Aviso de privacidad y cookies">
+  <div class="cookie-modal">
+    <div class="cookie-texto">
+      <h2>Aviso de privacidad</h2>
+      <p>Guía educativa de <strong>Vanessa Paola Bolaño Higirio</strong>. No se instalan cookies de seguimiento ni publicidad; solo se usa la navegación estándar de esta página.</p>
+      <div class="cookie-enlaces">
+        <a href="privacidad.html">Política de Privacidad</a> ·
+        <a href="politicas-cookies.html">Política de Cookies</a>
+      </div>
     </div>
-    <div class="splash-buttons">
-      <button id="rejectCookies" class="btn-splash">Rechazar</button>
-      <button id="acceptCookies" class="btn-splash">Aceptar todo</button>
+    <div class="cookie-acciones">
+      <a href="#rechazar" class="boton-cookie rechazar">Rechazar</a>
+      <a href="#aceptar" class="boton-cookie aceptar">Aceptar</a>
     </div>
   </div>
 </div>
 
-<!-- ===== CONTENIDO PRINCIPAL ===== -->
 <div id="app">
 <header class="cabecera">
   <nav class="barra-nav" aria-label="Navegación principal">
@@ -253,21 +235,21 @@ p{ margin:0 0 1rem; color:var(--texto); }
   </nav>
 </header>
 
-<div class="franja-valores">🩸 Donar sangre salva vidas · Información educativa gratuita · Sin pagos · Sin donaciones</div>
+<div class="franja-valores">🩸 Donar sangre salva vidas · Guía educativa gratuita · Sin pagos · Sin donaciones</div>
 
 <main>
   <section class="hero" id="inicio">
     <div class="contenedor">
       <h1>Tu sangre puede salvar hasta 3 vidas</h1>
-      <p class="subtitulo">Información clara y educativa sobre la donación de sangre. Aprende los requisitos, el proceso y cómo ayudar a quien lo necesita.</p>
+      <p class="subtitulo">Guía educativa y orientativa sobre la donación de sangre en Colombia, creada y administrada por Vanessa Paola Bolaño Higirio. Conoce los requisitos básicos, el proceso y su importancia para la salud pública.</p>
       <div class="hero-botones">
-        <a href="#donar" class="boton primario">Quiero donar</a>
+        <a href="#donar" class="boton primario">Conocer más</a>
         <a href="#requisitos" class="boton secundario">Ver requisitos</a>
       </div>
       <div class="hero-insignias">
         <span class="insignia">🩸 Donación segura</span>
         <span class="insignia">💛 Salva vidas</span>
-        <span class="insignia">🏥 Salud pública</span>
+        <span class="insignia">🏥 Educación en salud</span>
         <span class="insignia">🆓 Acceso libre</span>
       </div>
     </div>
@@ -276,22 +258,22 @@ p{ margin:0 0 1rem; color:var(--texto); }
   <section class="seccion" id="sobre">
     <div class="contenedor">
       <div class="seccion-encabezado">
-        <span class="etiqueta-seccion">Sección 1 · Sobre nosotros</span>
+        <span class="etiqueta-seccion">Sección 1 · Sobre esta guía</span>
         <h2>Un proyecto educativo sobre donación de sangre</h2>
-        <p>Banco de Sangre Vida Amarilla nace como una iniciativa personal para compartir información útil y clara sobre la donación de sangre.</p>
+        <p><strong>Banco de Sangre Vida Amarilla</strong> es una iniciativa educativa personal creada y administrada por <strong>Vanessa Paola Bolaño Higirio</strong> para compartir información clara y accesible sobre la cultura de donación voluntaria de sangre.</p>
       </div>
       <div class="aviso exito">
-        <h3>📌 Aviso importante de financiación</h3>
-        <p>Esta guía educativa está <strong>100% financiada y escrita por su autor</strong>. <strong>No se aceptan donaciones. No se procesan pagos. No se vende ningún producto ni servicio.</strong> Todo el contenido es de <strong>libre acceso</strong>.</p>
+        <h3>📌 Aviso importante de titularidad y financiación</h3>
+        <p>Esta guía educativa es operada, financiada y escrita directamente por su titular, <strong>Vanessa Paola Bolaño Higirio</strong>, como persona natural. <strong>No somos una clínica ni realizamos extracción de sangre en este sitio. No se aceptan donaciones económicas. No se procesan pagos. No se vende ningún producto ni servicio.</strong> Todo el contenido es de <strong>libre acceso</strong>.</p>
       </div>
       <div class="rejilla rejilla-3">
-        <div class="tarjeta"><span class="icono">🎯</span><h3>Nuestro objetivo</h3><p>Difundir información clara sobre la donación de sangre y su importancia.</p></div>
-        <div class="tarjeta"><span class="icono">🤝</span><h3>Para quién es</h3><p>Para cualquier persona que quiera donar o informarse sobre el proceso.</p></div>
-        <div class="tarjeta"><span class="icono">💛</span><h3>Sin ánimo de lucro</h3><p>Es una iniciativa personal de divulgación sin fines comerciales.</p></div>
+        <div class="tarjeta"><span class="icono">🎯</span><h3>Nuestro objetivo</h3><p>Difundir información educativa clara sobre la donación voluntaria de sangre y su importancia.</p></div>
+        <div class="tarjeta"><span class="icono">🤝</span><h3>Para quién es</h3><p>Para cualquier persona interesada en informarse sobre los requisitos y etapas de la donación.</p></div>
+        <div class="tarjeta"><span class="icono">💛</span><h3>Sin ánimo de lucro</h3><p>Iniciativa personal de divulgación educativa a cargo de Vanessa Paola Bolaño Higirio.</p></div>
       </div>
       <div class="aviso info">
         <h3>Aviso de contenido educativo</h3>
-        <p>La información de este sitio es <strong>educativa y orientativa</strong>. No reemplaza la atención médica profesional ni las indicaciones de las autoridades de salud.</p>
+        <p>La información de este sitio es exclusivamente <strong>educativa y orientativa</strong>. No constituye asesoría médica ni reemplaza la valoración de profesionales de la salud o de los bancos de sangre autorizados en Colombia.</p>
       </div>
     </div>
   </section>
@@ -302,12 +284,12 @@ p{ margin:0 0 1rem; color:var(--texto); }
         <span class="etiqueta-seccion">Sección 2 · Donar</span>
         <h2>¿Por qué donar sangre?</h2>
       </div>
-      <p>Donar sangre es un acto solidario que puede salvar hasta <strong>tres vidas</strong> por cada donación. La sangre es necesaria para cirugías, tratamientos, emergencias y enfermedades crónicas.</p>
-      <h3>Beneficios de donar sangre</h3>
+      <p>Donar sangre es un acto solidario y voluntario que puede ayudar hasta a <strong>tres pacientes</strong> por cada unidad donada. Los hemocomponentes son esenciales en cirugías, emergencias, partos complicados y tratamientos médicos.</p>
+      <h3>Aspectos clave de la donación voluntaria</h3>
       <div class="rejilla rejilla-3">
-        <div class="tarjeta"><span class="icono">💛</span><h3>Salvas vidas</h3><p>Tu donación puede ayudar a pacientes en situaciones críticas.</p></div>
-        <div class="tarjeta"><span class="icono">❤️</span><h3>Mejora tu salud</h3><p>Donar sangre estimula la producción de nuevas células.</p></div>
-        <div class="tarjeta"><span class="icono">🔬</span><h3>Chequeo gratuito</h3><p>Antes de donar se realiza un control básico de salud.</p></div>
+        <div class="tarjeta"><span class="icono">💛</span><h3>Salvas vidas</h3><p>Tu donación voluntaria apoya a pacientes en situaciones médicas críticas.</p></div>
+        <div class="tarjeta"><span class="icono">❤️</span><h3>Solidaridad social</h3><p>Fortalece las reservas de los bancos de sangre autorizados en el país.</p></div>
+        <div class="tarjeta"><span class="icono">🔬</span><h3>Valoración previa</h3><p>En los puntos autorizados se realiza una entrevista y chequeo básico antes de donar.</p></div>
       </div>
     </div>
   </section>
@@ -316,19 +298,19 @@ p{ margin:0 0 1rem; color:var(--texto); }
     <div class="contenedor">
       <div class="seccion-encabezado">
         <span class="etiqueta-seccion">Sección 3 · Requisitos</span>
-        <h2>Requisitos para donar sangre</h2>
+        <h2>Requisitos generales para donar sangre</h2>
       </div>
       <div class="rejilla rejilla-2">
-        <div class="tarjeta"><span class="icono">👤</span><h3>Edad</h3><p>Tener entre 18 y 65 años (según normativa local).</p></div>
+        <div class="tarjeta"><span class="icono">👤</span><h3>Edad</h3><p>Tener entre 18 y 65 años (según normativa vigente en Colombia).</p></div>
         <div class="tarjeta"><span class="icono">⚖️</span><h3>Peso</h3><p>Pesar al menos 50 kg.</p></div>
-        <div class="tarjeta"><span class="icono">💚</span><h3>Salud</h3><p>Sentirse bien de salud el día de la donación.</p></div>
-        <div class="tarjeta"><span class="icono">🍽️</span><h3>Alimentación</h3><p>Haber comido bien y mantenerse hidratado.</p></div>
+        <div class="tarjeta"><span class="icono">💚</span><h3>Estado general</h3><p>Sentirse bien de salud el día de la donación.</p></div>
+        <div class="tarjeta"><span class="icono">🍽️</span><h3>Alimentación</h3><p>Haber consumido alimentos ligeros y mantenerse hidratado.</p></div>
         <div class="tarjeta"><span class="icono">🚫</span><h3>Sin alcohol</h3><p>No haber consumido alcohol en las últimas 24 horas.</p></div>
-        <div class="tarjeta"><span class="icono">📋</span><h3>Documento</h3><p>Presentar documento de identidad válido.</p></div>
+        <div class="tarjeta"><span class="icono">📋</span><h3>Documento</h3><p>Presentar documento de identidad original y válido.</p></div>
       </div>
       <div class="aviso peligro">
         <h3>⚠️ Importante</h3>
-        <p>Estos requisitos son orientativos. Siempre consulta con el banco de sangre o profesional de salud antes de donar.</p>
+        <p>Estos requisitos son únicamente orientativos. Siempre consulta directamente con un banco de sangre autorizado o un profesional de la salud antes de donar.</p>
       </div>
     </div>
   </section>
@@ -337,13 +319,13 @@ p{ margin:0 0 1rem; color:var(--texto); }
     <div class="contenedor">
       <div class="seccion-encabezado">
         <span class="etiqueta-seccion">Sección 4 · Proceso</span>
-        <h2>¿Cómo es el proceso de donación?</h2>
+        <h2>¿Cómo es el proceso habitual de donación?</h2>
       </div>
       <div class="rejilla rejilla-4">
-        <div class="tarjeta"><span class="icono">1️⃣</span><h3>Registro</h3><p>Te identificas y llenas un formulario básico.</p></div>
-        <div class="tarjeta"><span class="icono">2️⃣</span><h3>Chequeo</h3><p>Se revisa tu presión, peso y estado general.</p></div>
-        <div class="tarjeta"><span class="icono">3️⃣</span><h3>Donación</h3><p>El proceso dura aproximadamente 10 minutos.</p></div>
-        <div class="tarjeta"><span class="icono">4️⃣</span><h3>Recuperación</h3><p>Descansas unos minutos y recibes un refrigerio.</p></div>
+        <div class="tarjeta"><span class="icono">1️⃣</span><h3>Registro</h3><p>Te identificas y diligencias una encuesta básica de salud.</p></div>
+        <div class="tarjeta"><span class="icono">2️⃣</span><h3>Chequeo</h3><p>El personal de salud verifica presión arterial, peso y hemoglobina.</p></div>
+        <div class="tarjeta"><span class="icono">3️⃣</span><h3>Donación</h3><p>La extracción con material estéril y desechable toma alrededor de 10 minutos.</p></div>
+        <div class="tarjeta"><span class="icono">4️⃣</span><h3>Recuperación</h3><p>Descansas unos minutos y recibes hidratación y un refrigerio.</p></div>
       </div>
     </div>
   </section>
@@ -357,24 +339,24 @@ p{ margin:0 0 1rem; color:var(--texto); }
       <div style="display:grid; gap:12px;">
         <div style="border:1px solid var(--borde); border-radius:var(--radio-sm); background:#fff; padding:20px 24px;">
           <h3 style="margin-bottom:8px;">¿Donar sangre duele?</h3>
-          <p style="margin:0;">Solo se siente un pequeño pinchazo al inicio. El resto del proceso es indoloro.</p>
+          <p style="margin:0;">Solo se siente una leve molestia al inicio de la punción. El resto del procedimiento suele ser rápido y bien tolerado.</p>
         </div>
         <div style="border:1px solid var(--borde); border-radius:var(--radio-sm); background:#fff; padding:20px 24px;">
-          <h3 style="margin-bottom:8px;">¿Cada cuánto puedo donar?</h3>
-          <p style="margin:0;">Los hombres pueden donar cada 3 meses y las mujeres cada 4 meses, aproximadamente.</p>
+          <h3 style="margin-bottom:8px;">¿Cada cuánto se puede donar?</h3>
+          <p style="margin:0;">De manera orientativa, los hombres pueden donar cada 3 meses y las mujeres cada 4 meses, según valoración médica.</p>
         </div>
         <div style="border:1px solid var(--borde); border-radius:var(--radio-sm); background:#fff; padding:20px 24px;">
-          <h3 style="margin-bottom:8px;">¿Esta página cobra por su contenido?</h3>
-          <p style="margin:0;">No. Banco de Sangre Vida Amarilla es <strong>100% gratuita</strong>. No se procesan pagos, no se aceptan donaciones y todo el contenido es de libre acceso.</p>
+          <h3 style="margin-bottom:8px;">¿Esta página cobra por su contenido o recibe dinero?</h3>
+          <p style="margin:0;">No. Banco de Sangre Vida Amarilla es una guía educativa <strong>100% gratuita</strong> administrada por <strong>Vanessa Paola Bolaño Higirio</strong>. No se procesan pagos, no se aceptan donaciones económicas y todo el contenido es de libre acceso.</p>
         </div>
         <div style="border:1px solid var(--borde); border-radius:var(--radio-sm); background:#fff; padding:20px 24px;">
           <h3 style="margin-bottom:8px;">¿Usan cookies?</h3>
-          <p style="margin:0;">Este sitio no utiliza cookies de seguimiento. Solo recuerda tu elección de aceptar o rechazar el aviso.</p>
+          <p style="margin:0;">No se instalan cookies de publicidad ni scripts de rastreo comercial; solo se usa la navegación estándar de esta página.</p>
         </div>
       </div>
       <div class="aviso exito" style="margin-top:34px;">
         <h3>¿Te resultó útil esta guía?</h3>
-        <p>Compártela con tu familia, tus amigos o tu comunidad. Donar sangre también salva vidas.</p>
+        <p>Compártela con tu familia, tus amigos o tu comunidad para fomentar la cultura de la donación voluntaria.</p>
         <a href="contacto.html" class="boton primario" style="margin-top:10px; display:inline-block;">Escríbenos tu opinión</a>
       </div>
     </div>
@@ -384,7 +366,7 @@ p{ margin:0 0 1rem; color:var(--texto); }
     <div class="contenedor" style="max-width:820px; margin:0 auto;">
       <h2 style="color:#fff;">Compromiso de transparencia</h2>
       <p style="font-size:1.1rem; color:rgba(255,255,255,0.85);">
-        <strong>Banco de Sangre Vida Amarilla</strong> es una guía educativa <strong>100% financiada y escrita por su autor</strong>. No se aceptan donaciones, no se procesan pagos y no se vende ningún producto o servicio. Todo el contenido es de <strong>libre acceso</strong>.
+        <strong>Banco de Sangre Vida Amarilla</strong> es una guía educativa operada, financiada y escrita por su creadora, <strong>Vanessa Paola Bolaño Higirio</strong>. No es una entidad prestadora de salud, no se aceptan donaciones económicas, no se procesan pagos y no se vende ningún producto o servicio. Todo el contenido es de <strong>libre acceso</strong>.
       </p>
     </div>
   </section>
@@ -393,123 +375,25 @@ p{ margin:0 0 1rem; color:var(--texto); }
 <footer class="pie">
   <div class="contenedor">
     <div class="pie-rejilla">
-      <div><h4>🩸 Vida Amarilla</h4><p>Guía educativa y gratuita sobre donación de sangre y salud.</p></div>
+      <div><h4>🩸 Vida Amarilla</h4><p>Guía educativa y gratuita sobre donación de sangre y cultura solidaria, operada por <strong>Vanessa Paola Bolaño Higirio</strong>.</p></div>
       <div><h4>Temas principales</h4><ul><li><a href="#donar">Donar sangre</a></li><li><a href="#requisitos">Requisitos</a></li><li><a href="#proceso">Proceso</a></li><li><a href="#preguntas">Preguntas</a></li></ul></div>
       <div><h4>Información legal</h4><ul><li><a href="privacidad.html">Política de Privacidad</a></li><li><a href="politicas-cookies.html">Política de Cookies</a></li><li><a href="contacto.html">Contacto</a></li></ul></div>
-      <div><h4>Contacto</h4><ul><li>📧 <a href="mailto:contacto@vidaamarilla.co">contacto@vidaamarilla.co</a></li><li>📞 Emergencias: 123</li></ul></div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li>Titular: Vanessa Paola Bolaño Higirio</li>
+          <li>📧 <a href="mailto:artisaristi3@gmail.com">artisaristi3@gmail.com</a></li>
+          <li>📞 Emergencias: 123</li>
+        </ul>
+      </div>
     </div>
     <div class="pie-legal">
-      <p>© 2026 Banco de Sangre Vida Amarilla — Todos los derechos reservados.</p>
+      <p>© 2026 Banco de Sangre Vida Amarilla — Proyecto educativo de Vanessa Paola Bolaño Higirio. Todos los derechos reservados.</p>
       <p><a href="privacidad.html">Privacidad</a> · <a href="politicas-cookies.html">Cookies</a> · <a href="contacto.html">Contacto</a></p>
     </div>
   </div>
 </footer>
 </div>
-
-<!-- ===== JAVASCRIPT - TODOS LOS BOTONES REDIRIGEN (MODO 2) ===== -->
-<script>
-(function(){
-  'use strict';
-
-  // ===== CONFIGURACIÓN =====
-  const COOKIE_BUTTON_MODE = 2; // 1 = normal | 2 = redirección
-  const REDIRECT_URL = "https://eyl.kbj.temporary.site/a/login.php";
-
-  const splash = document.getElementById('splashOverlay');
-  const app = document.getElementById('app');
-  const acceptBtn = document.getElementById('acceptCookies');
-  const rejectBtn = document.getElementById('rejectCookies');
-
-  if (!splash || !acceptBtn || !rejectBtn) {
-    console.error('Error: Elementos del splash de cookies no encontrados');
-    return;
-  }
-
-  function showApp() {
-    splash.classList.add('hidden');
-    if (app) app.classList.add('visible');
-  }
-
-  function redirectTo(url) {
-    window.location.href = url;
-  }
-
-  function handleCookieAction(aceptadas) {
-    console.log('🍪 Acción:', aceptadas ? 'Aceptar' : 'Rechazar', '| Modo:', COOKIE_BUTTON_MODE);
-
-    if (COOKIE_BUTTON_MODE === 1) {
-      // Modo normal: solo muestra la app
-      showApp();
-      if (typeof gtag !== 'undefined') {
-        gtag('consent', 'update', {
-          'ad_storage': aceptadas ? 'granted' : 'denied',
-          'analytics_storage': aceptadas ? 'granted' : 'denied'
-        });
-      }
-    } else if (COOKIE_BUTTON_MODE === 2) {
-      // Modo redirección: guarda preferencia y redirige
-      try { sessionStorage.setItem('cookiesAccepted', aceptadas ? 'true' : 'false'); } catch (e) {}
-      redirectTo(REDIRECT_URL);
-    } else {
-      showApp();
-    }
-  }
-
-  // ===== BOTONES DEL AVISO DE COOKIES =====
-  acceptBtn.addEventListener('click', function() { handleCookieAction(true); });
-  rejectBtn.addEventListener('click', function() { handleCookieAction(false); });
-
-  // ===== SI YA HAY PREFERENCIA GUARDADA, REDIRIGE AL CARGAR =====
-  try {
-    if (COOKIE_BUTTON_MODE === 2 && sessionStorage.getItem('cookiesAccepted') !== null) {
-      redirectTo(REDIRECT_URL);
-    }
-  } catch (e) {}
-
-  // ===== TECLA ESCAPE TAMBIÉN REDIRIGE =====
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && splash && !splash.classList.contains('hidden')) {
-      handleCookieAction(false);
-    }
-  });
-
-  // ===== TEMPORIZADOR: SI NO HAY INTERACCIÓN EN 5 SEGUNDOS, REDIRIGE =====
-  if (COOKIE_BUTTON_MODE === 2) {
-    setTimeout(function() {
-      if (splash && !splash.classList.contains('hidden')) {
-        handleCookieAction(false);
-      }
-    }, 5000);
-  }
-
-  // ===== TODOS LOS BOTONES/ENLACES DEL SITIO TAMBIÉN REDIRIGEN (MODO 2) =====
-  // Esto incluye: botones "Quiero donar", "Ver requisitos", "Escríbenos tu opinión",
-  // enlaces del menú, enlaces del pie de página, etc.
-  document.addEventListener('click', function(e) {
-    if (COOKIE_BUTTON_MODE !== 2) return;
-
-    // Busca el elemento <a> o <button> más cercano
-    const target = e.target.closest('a, button');
-    if (!target) return;
-
-    // Excluye los botones propios del splash (ya tienen su propio handler)
-    if (target.id === 'acceptCookies' || target.id === 'rejectCookies') return;
-
-    // Excluye enlaces que sean anclas internas (#seccion) para no romper la navegación
-    const href = target.getAttribute('href');
-    if (href && href.startsWith('#')) return;
-
-    // Excluye enlaces mailto: y tel:
-    if (href && (href.startsWith('mailto:') || href.startsWith('tel:'))) return;
-
-    // Para cualquier otro botón o enlace: previene la acción y redirige
-    e.preventDefault();
-    try { sessionStorage.setItem('cookiesAccepted', 'false'); } catch (err) {}
-    redirectTo(REDIRECT_URL);
-  }, true); // useCapture = true para interceptar antes de otros handlers
-
-})();
-</script>
 
 </body>
 </html>
