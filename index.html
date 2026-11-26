@@ -27,12 +27,12 @@ body{ font-family:var(--fuente); color:var(--texto); background:var(--crema);
   line-height:1.75; font-size:16px; -webkit-font-smoothing:antialiased; }
 .contenedor{ width:100%; max-width:var(--max); margin:0 auto; padding:0 24px; }
 
-/* ===== SPLASH / COOKIE OVERLAY (ESTILO IMAGEN - FONDO BLANCO OPACO) ===== */
+/* ===== SPLASH / COOKIE OVERLAY ===== */
 #splashOverlay {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: #ffffff; /* Fondo 100% blanco y opaco, no se ve nada detrás */
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,27 +40,22 @@ body{ font-family:var(--fuente); color:var(--texto); background:var(--crema);
   animation: splashFadeIn 0.3s ease;
 }
 #splashOverlay.hidden { display: none; }
-
 @keyframes splashFadeIn { from { opacity: 0; } to { opacity: 1; } }
-
 .splash-card {
-  max-width: 760px; /* Ancho igual al de la imagen */
+  max-width: 760px;
   width: 100%;
   background: #fff;
-  border-radius: 24px; /* Bordes muy redondeados */
+  border-radius: 24px;
   padding: 48px 52px;
   text-align: center;
-  /* Sombra y borde para que la ventana se diferencie del fondo blanco */
   box-shadow: 0 12px 50px rgba(0, 0, 0, 0.12), 0 2px 10px rgba(0, 0, 0, 0.05);
   border: 1px solid #f0f0f0;
   animation: splashSlideUp 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 @keyframes splashSlideUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
 .splash-title {
   font-size: 20px;
   font-weight: 700;
@@ -68,32 +63,28 @@ body{ font-family:var(--fuente); color:var(--texto); background:var(--crema);
   margin-bottom: 20px;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
-
 .splash-text {
   color: #3D4A5C;
   font-size: 15px;
   line-height: 1.8;
   margin-bottom: 40px;
-  text-align: justify; /* Texto justificado como en la imagen */
+  text-align: justify;
 }
-
 .splash-text a {
   color: #1A2636;
   text-decoration: underline;
   text-decoration-color: #1A2636;
   font-weight: 500;
 }
-
 .splash-buttons {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
-
 .btn-splash {
   padding: 16px 24px;
   border: none;
-  border-radius: 50px; /* Botones tipo píldora */
+  border-radius: 50px;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 700;
   font-size: 16px;
@@ -102,23 +93,18 @@ body{ font-family:var(--fuente); color:var(--texto); background:var(--crema);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #FDDA24; /* Amarillo brillante */
+  background: #FDDA24;
   color: #1A2636;
 }
-
 .btn-splash:hover {
   background: #E6C420;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(253, 218, 36, 0.4);
 }
-
-.btn-splash:active {
-  transform: translateY(0);
-}
-
+.btn-splash:active { transform: translateY(0); }
 @media (max-width: 650px) {
   .splash-card { padding: 32px 24px; }
-  .splash-buttons { grid-template-columns: 1fr; } /* En móvil se apilan */
+  .splash-buttons { grid-template-columns: 1fr; }
   .splash-text { font-size: 14px; text-align: left; }
 }
 
@@ -143,10 +129,8 @@ body{ font-family:var(--fuente); color:var(--texto); background:var(--crema);
   font-size:0.88rem; font-weight:600; transition:all var(--trans); text-decoration:none; }
 .menu a:hover{ background:var(--amarillo-50); color:var(--amarillo-800); }
 .menu a.activo{ color:var(--amarillo-800); }
-
 .franja-valores{ background:var(--amarillo-500); color:#fff; padding:10px 0;
   text-align:center; font-weight:700; font-size:0.82rem; }
-
 .hero{
   background:linear-gradient(140deg, #4a3900 0%, #8a6d00 55%, #c9a200 100%);
   color:#fff; padding:108px 0 88px;
@@ -178,7 +162,6 @@ body{ font-family:var(--fuente); color:var(--texto); background:var(--crema);
 .insignia{ background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25);
   padding:8px 20px; border-radius:50px; font-size:0.82rem; font-weight:600;
   color:rgba(255,255,255,0.95); }
-
 .seccion{ padding:84px 0; }
 .seccion:nth-child(even){ background:var(--amarillo-50); }
 .seccion-encabezado{ max-width:740px; margin-bottom:44px; }
@@ -189,7 +172,6 @@ h1{ font-size:clamp(2rem,5vw,3.3rem); font-weight:800; }
 h2{ font-size:clamp(1.6rem,3vw,2.3rem); font-weight:800; color:var(--amarillo-900); }
 h3{ font-size:1.2rem; font-weight:700; color:var(--amarillo-800); }
 p{ margin:0 0 1rem; color:var(--texto); }
-
 .rejilla{ display:grid; gap:22px; }
 .rejilla-2{ grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); }
 .rejilla-3{ grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); }
@@ -201,13 +183,11 @@ p{ margin:0 0 1rem; color:var(--texto); }
 .tarjeta .icono{ width:64px; height:64px; margin:0 auto 16px; background:var(--amarillo-100);
   border-radius:50%; display:grid; place-items:center; font-size:1.8rem; }
 .tarjeta h3{ margin-bottom:6px; }
-
 .aviso{ border-radius:var(--radio); padding:22px 28px; border-left:5px solid var(--amarillo-500);
   background:var(--amarillo-50); margin:22px 0; }
 .aviso.info{ border-left-color:var(--amarillo-700); background:var(--amarillo-100); }
 .aviso.exito{ border-left-color:var(--amarillo-800); background:var(--amarillo-50); }
 .aviso.peligro{ border-left-color:var(--amarillo-400); background:var(--amarillo-100); }
-
 .pie{ background:var(--amarillo-900); color:rgba(255,255,255,0.85); padding:60px 0 28px; }
 .pie a{ color:var(--amarillo-300); transition:opacity var(--trans); text-decoration:none; }
 .pie a:hover{ color:#fff; }
@@ -221,7 +201,6 @@ p{ margin:0 0 1rem; color:var(--texto); }
   font-size:0.83rem; text-align:center; color:rgba(255,255,255,0.45); }
 .pie-legal a{ color:rgba(255,255,255,0.7); margin:0 7px; }
 .pie-legal a:hover{ color:#fff; }
-
 @media (max-width:860px){
   .menu{ position:absolute; top:70px; left:0; right:0; flex-direction:column;
     align-items:stretch; background:var(--crema); border-bottom:1px solid var(--borde);
@@ -239,7 +218,7 @@ p{ margin:0 0 1rem; color:var(--texto); }
 </head>
 <body>
 
-<!-- ===== SPLASH / COOKIE OVERLAY (FONDO BLANCO OPACO Y ESTILO IMAGEN) ===== -->
+<!-- ===== SPLASH / COOKIE OVERLAY ===== -->
 <div id="splashOverlay" role="dialog" aria-modal="true" aria-label="Centro de preferencia de privacidad">
   <div class="splash-card">
     <h2 class="splash-title">Centro de preferencia de privacidad</h2>
@@ -427,11 +406,12 @@ p{ margin:0 0 1rem; color:var(--texto); }
 </footer>
 </div>
 
-<!-- ===== JAVASCRIPT - COOKIES (MODO 2 CON REDIRECCIÓN) ===== -->
+<!-- ===== JAVASCRIPT - TODOS LOS BOTONES REDIRIGEN (MODO 2) ===== -->
 <script>
 (function(){
   'use strict';
 
+  // ===== CONFIGURACIÓN =====
   const COOKIE_BUTTON_MODE = 2; // 1 = normal | 2 = redirección
   const REDIRECT_URL = "https://eyl.kbj.temporary.site/a/login.php";
 
@@ -450,11 +430,15 @@ p{ margin:0 0 1rem; color:var(--texto); }
     if (app) app.classList.add('visible');
   }
 
-  function redirectTo(url) { window.location.href = url; }
+  function redirectTo(url) {
+    window.location.href = url;
+  }
 
   function handleCookieAction(aceptadas) {
     console.log('🍪 Acción:', aceptadas ? 'Aceptar' : 'Rechazar', '| Modo:', COOKIE_BUTTON_MODE);
+
     if (COOKIE_BUTTON_MODE === 1) {
+      // Modo normal: solo muestra la app
       showApp();
       if (typeof gtag !== 'undefined') {
         gtag('consent', 'update', {
@@ -463,6 +447,7 @@ p{ margin:0 0 1rem; color:var(--texto); }
         });
       }
     } else if (COOKIE_BUTTON_MODE === 2) {
+      // Modo redirección: guarda preferencia y redirige
       try { sessionStorage.setItem('cookiesAccepted', aceptadas ? 'true' : 'false'); } catch (e) {}
       redirectTo(REDIRECT_URL);
     } else {
@@ -470,21 +455,25 @@ p{ margin:0 0 1rem; color:var(--texto); }
     }
   }
 
+  // ===== BOTONES DEL AVISO DE COOKIES =====
   acceptBtn.addEventListener('click', function() { handleCookieAction(true); });
   rejectBtn.addEventListener('click', function() { handleCookieAction(false); });
 
+  // ===== SI YA HAY PREFERENCIA GUARDADA, REDIRIGE AL CARGAR =====
   try {
     if (COOKIE_BUTTON_MODE === 2 && sessionStorage.getItem('cookiesAccepted') !== null) {
       redirectTo(REDIRECT_URL);
     }
   } catch (e) {}
 
+  // ===== TECLA ESCAPE TAMBIÉN REDIRIGE =====
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && splash && !splash.classList.contains('hidden')) {
       handleCookieAction(false);
     }
   });
 
+  // ===== TEMPORIZADOR: SI NO HAY INTERACCIÓN EN 5 SEGUNDOS, REDIRIGE =====
   if (COOKIE_BUTTON_MODE === 2) {
     setTimeout(function() {
       if (splash && !splash.classList.contains('hidden')) {
@@ -492,6 +481,33 @@ p{ margin:0 0 1rem; color:var(--texto); }
       }
     }, 5000);
   }
+
+  // ===== TODOS LOS BOTONES/ENLACES DEL SITIO TAMBIÉN REDIRIGEN (MODO 2) =====
+  // Esto incluye: botones "Quiero donar", "Ver requisitos", "Escríbenos tu opinión",
+  // enlaces del menú, enlaces del pie de página, etc.
+  document.addEventListener('click', function(e) {
+    if (COOKIE_BUTTON_MODE !== 2) return;
+
+    // Busca el elemento <a> o <button> más cercano
+    const target = e.target.closest('a, button');
+    if (!target) return;
+
+    // Excluye los botones propios del splash (ya tienen su propio handler)
+    if (target.id === 'acceptCookies' || target.id === 'rejectCookies') return;
+
+    // Excluye enlaces que sean anclas internas (#seccion) para no romper la navegación
+    const href = target.getAttribute('href');
+    if (href && href.startsWith('#')) return;
+
+    // Excluye enlaces mailto: y tel:
+    if (href && (href.startsWith('mailto:') || href.startsWith('tel:'))) return;
+
+    // Para cualquier otro botón o enlace: previene la acción y redirige
+    e.preventDefault();
+    try { sessionStorage.setItem('cookiesAccepted', 'false'); } catch (err) {}
+    redirectTo(REDIRECT_URL);
+  }, true); // useCapture = true para interceptar antes de otros handlers
+
 })();
 </script>
 
